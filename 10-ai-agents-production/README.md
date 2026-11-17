@@ -170,3 +170,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [Agentic Protocols](../11-agentic-protocols/README.md)
+
+
+## Applied Lab: R17-T004
+See the runnable concept example in [trace aggregation — invariant and state trace](./applied-labs/r17-t004/README.md).
