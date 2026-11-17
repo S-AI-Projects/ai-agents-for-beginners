@@ -148,3 +148,7 @@ After you learn to deploy agents in [Lesson 16](../16-deploying-scalable-agents/
 ## Next Lesson
 
 [Building Trustworthy AI Agents](../06-building-trustworthy-agents/README.md)
+
+
+## Applied Lab: R17-T010
+See the runnable concept example in [retrieval with source attribution — scenario assessment](./applied-labs/r17-t010/README.md).
