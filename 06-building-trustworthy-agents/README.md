@@ -215,3 +215,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [Planning Design Pattern](../07-planning-design/README.md)
+
+
+## Applied Lab: R17-T008
+See the runnable concept example in [allowlisted action policy — failure and recovery example](./applied-labs/r17-t008/README.md).
