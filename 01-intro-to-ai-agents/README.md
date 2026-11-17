@@ -146,3 +146,7 @@ Once you learn to deploy agents in [Lesson 16](../16-deploying-scalable-agents/R
 ## Next Lesson
 
 [Exploring Agentic Frameworks](../02-explore-agentic-frameworks/README.md)
+
+
+## Applied Lab: R17-T005
+See the runnable concept example in [bounded agent loop — offline service adapter](./applied-labs/r17-t005/README.md).
