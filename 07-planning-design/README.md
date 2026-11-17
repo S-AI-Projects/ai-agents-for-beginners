@@ -277,3 +277,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [Multi-Agent Design Pattern](../08-multi-agent/README.md)
+
+
+## Applied Lab: R17-T007
+See the runnable concept example in [dependency-plan validation — worked example with checks](./applied-labs/r17-t007/README.md).
