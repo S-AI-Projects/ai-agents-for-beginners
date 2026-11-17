@@ -109,3 +109,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [Tool Use Design Pattern](../04-tool-use/README.md)
+
+
+## Applied Lab: R17-T003
+See the runnable concept example in [agent-component routing — compare two approaches](./applied-labs/r17-t003/README.md).
