@@ -1432,3 +1432,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [AI Agents in Production](../10-ai-agents-production/README.md)
+
+
+## Applied Lab: R17-T009
+See the runnable concept example in [confidence-gated escalation — evaluation experiment](./applied-labs/r17-t009/README.md).
