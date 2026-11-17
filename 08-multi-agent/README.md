@@ -198,3 +198,7 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 ## Next Lesson
 
 [Metacognition in AI Agents](../09-metacognition/README.md)
+
+
+## Applied Lab: R17-T006
+See the runnable concept example in [dependency-plan validation — refactor the teaching example](./applied-labs/r17-t006/README.md).
