@@ -102,6 +102,20 @@ Browser agents operate on live websites, so they need tighter boundaries than a 
 
 In the Airbnb sample, the safe default is to search listings and extract prices. Signing in, contacting a host, or completing a booking should be a separate user-approved action.
 
+### Applied Example: Deterministic Browser-Action Guard (Lab R17-T021)
+
+For an applied, runnable implementation of origin scoping and step budget enforcement, see [applied-labs/r17-t021](./applied-labs/r17-t021/README.md).
+
+- **Concept:** Enforces origin containment (navigation to `example.invalid` passes; unauthorized origins are rejected before execution) and execution bounds (a 4th step fails under a 3-step budget).
+- **Fixture:** Employs a deterministic, in-memory `MockBrowserSession` stub requiring only the Python standard library (no Playwright browser binaries, GPUs, or cloud credentials required).
+- **Invocation & Verification:**
+  ```bash
+  python3 15-browser-use/applied-labs/r17-t021/example.py
+  python3 -m unittest discover -s 15-browser-use/applied-labs/r17-t021 -p "test_*.py"
+  ```
+- **Expected Output:** Steps 1-3 complete successfully; the 4th step is blocked by `StepBudgetExceededError`; navigation to an unapproved origin raises `DisallowedOriginError` without altering browser state.
+- **Scope & Limitations:** Explicitly labeled as a local simulation stub modeling middleware semantics; it does not perform real-world DOM rendering or network protocol exchanges.
+
 ### Real-World Applications
 
 - Travel booking and price monitoring
