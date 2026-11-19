@@ -1425,6 +1425,28 @@ Metacognition is a powerful tool that can significantly enhance the capabilities
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Confidence-Gated Escalation Assessment
+
+A small runnable example that extends this lesson: [applied-labs/r17-t040](./applied-labs/r17-t040/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 09-metacognition/applied-labs/r17-t040/example.py
+```
+
+```text
+Q1. Predict the output of route(0.8, 2).
+    answer: answer
+    check passed: True
+Q2. route(0.1 + 0.7, 3) returns review although the intended confidence is 0.8. Why?
+    answer: 0.1 + 0.7 is 0.7999999999999999 in floating point, which is below 0.8.
+    check passed: True
+Q3. A scorer returns 1.2. Should route clamp it to 1 or reject it?
+    answer: Reject it.
+    check passed: True
+```
+
+The thresholds are illustrative; no real model produces the confidence score. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Multi-Agent Design Pattern](../08-multi-agent/README.md)
