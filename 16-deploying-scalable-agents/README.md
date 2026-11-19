@@ -377,6 +377,28 @@ In this lesson you moved an agent from prototype to production with Microsoft Fo
 
 The next lesson takes the opposite journey: instead of scaling agents up into the cloud, you will bring them *down* onto a single developer machine and run them entirely locally.
 
+## Applied Lab: Trace Aggregation — Evaluation Experiment
+
+For a hands-on, zero-dependency implementation of telemetry correlation, privacy preservation, incomplete span detection, and evaluation across controlled batch sizes, see the [Trace Aggregation Applied Lab](./applied-labs/r17-t029/README.md).
+
+### Quick Invocation
+
+```bash
+# Run trace aggregator & evaluation experiment
+python3 16-deploying-scalable-agents/applied-labs/r17-t029/example.py
+
+# Run automated verification suite
+python3 -m unittest discover -s 16-deploying-scalable-agents/applied-labs/r17-t029 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Correlation & Duration**: Groups events by `request_id`. Request A executes 2 tool calls in 12ms with status `success`.
+- **Failure Accounting**: Request B terminates with status `failure` and captures error telemetry.
+- **Incomplete Span Handling**: Traces missing an `end` event are marked `status="incomplete"` with `duration_ms=None` (never 0.0).
+- **Telemetry Privacy**: Strict contract excludes raw prompt contents from aggregated metric reports.
+- **Controlled Experiment**: Evaluates 3 controlled input sizes (Small, Medium, Large) measuring latency scaling, event throughput, and completeness classification accuracy.
+- **Educational Scope**: Pure Python 3 standard library simulation modeling OpenTelemetry and Foundry tracing without requiring Azure subscriptions or live cloud logging services.
+
 ## Additional Resources
 
 - <a href="https://learn.microsoft.com/azure/ai-foundry/what-is-azure-ai-foundry" target="_blank">Microsoft Foundry documentation</a>
