@@ -126,6 +126,20 @@ Let's say we want an AI agent to **"Book me a trip to Paris."**
 
 - Then, an example response could be:  "Hey [Your Name]! I see you're free the first week of October. Shall I look for direct flights to Paris on [Preferred Airline] within your usual budget of [Budget]?". This richer, context-aware response demonstrates the power of context engineering.
 
+### Applied Example: Prompt-Template Escaping — Approach Comparison (Lab R17-T023)
+
+For an applied, runnable comparison of prompt template escaping, declared variable validation, and literal brace preservation, see [applied-labs/r17-t023](./applied-labs/r17-t023/README.md).
+
+- **Concept:** Compares direct regex substitution against an independent table-lookup baseline on identical inputs. Enforces strict parameter validation (`name`, `topic`), rejects missing variables with `MissingVariableError`, and preserves curly braces inside user values as 100% literal characters.
+- **Fixture:** Uses an in-memory deterministic template renderer requiring only the Python standard library (no cloud API keys, external models, or GPUs required).
+- **Invocation & Verification:**
+  ```bash
+  python3 12-context-engineering/applied-labs/r17-t023/example.py
+  python3 -m unittest discover -s 12-context-engineering/applied-labs/r17-t023 -p "test_*.py" -v
+  ```
+- **Expected Output:** Both approaches yield identical rendered strings for valid inputs; missing `topic` fails with `MissingVariableError`; braces in user data remain literal; and deliberate wrong assertion checks exit non-zero.
+- **Scope & Limitations:** Explicitly labeled as a local structural escaping fixture. Templating establishes field boundaries, but does not alone prevent semantic prompt injection.
+
 ## Common Context Failures
 
 ### Context Poisoning
