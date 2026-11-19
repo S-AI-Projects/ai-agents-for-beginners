@@ -163,6 +163,23 @@ A common pattern for self-improving agents involves introducing a **"knowledge a
 ## Got More Questions About Agent Memory?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
+## Applied Lab: Memory Capacity Experiment
+
+A small runnable example that extends this lesson: [applied-labs/r17-t036](./applied-labs/r17-t036/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 13-agent-memory/applied-labs/r17-t036/example.py
+```
+
+```text
+capacity  kept             correct  recall_newest
+1         F                True     0.33
+3         DEF              True     1.0
+5         BCDEF            True     1.0
+```
+
+This is a toy buffer experiment and makes no claim about real-world model accuracy. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Context Engineering for AI Agents](../12-context-engineering/README.md)
