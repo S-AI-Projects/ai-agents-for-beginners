@@ -174,6 +174,21 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 - [NLWeb Repo](https://github.com/nlweb-ai/NLWeb)
 - [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/overview/?wt.mc_id=youtube_26688_organicsocial_reactor&pivots=programming-language-python)
 
+## Applied Lab: Bounded Conversation Memory Refactor
+
+A small runnable example that extends this lesson: [applied-labs/r17-t035](./applied-labs/r17-t035/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 11-agentic-protocols/applied-labs/r17-t035/example.py
+```
+
+```text
+BaselineMemory ['B', 'C', 'D']
+Memory ['B', 'C', 'D']
+```
+
+This is a local simulation; no MCP, A2A or NLWeb traffic is involved. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [AI Agents in Production](../10-ai-agents-production/README.md)
