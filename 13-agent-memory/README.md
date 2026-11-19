@@ -160,6 +160,28 @@ A common pattern for self-improving agents involves introducing a **"knowledge a
 
 • **Knowledge Base Maintenance**: For a growing knowledge base, less frequently used information can be moved to "cold storage" to manage costs.
 
+## Applied Lab: Memory Boundary Cases
+
+A small runnable example that extends this lesson: [applied-labs/r17-t039](./applied-labs/r17-t039/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 13-agent-memory/applied-labs/r17-t039/example.py
+```
+
+```text
+empty: []
+one record: ['A']
+exactly full: ['A', 'B', 'C']
+one over: ['B', 'C', 'D']
+smallest capacity: ['B']
+capacity 0: capacity must be a positive integer
+capacity -1: capacity must be a positive integer
+capacity '3': capacity must be a positive integer
+capacity True: capacity must be a positive integer
+```
+
+This is a local simulation of a bounded in-process buffer. See the lab README for scope and limitations.
+
 ## Got More Questions About Agent Memory?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
