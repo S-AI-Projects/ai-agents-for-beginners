@@ -102,6 +102,20 @@ Browser agents operate on live websites, so they need tighter boundaries than a 
 
 In the Airbnb sample, the safe default is to search listings and extract prices. Signing in, contacting a host, or completing a booking should be a separate user-approved action.
 
+### Applied Example: Offline Browser Service Adapter (Lab R17-T025)
+
+For an applied, runnable implementation decoupling browser automation behind a callable interface and testing policy guardrails with a local adapter, see [applied-labs/r17-t025](./applied-labs/r17-t025/README.md).
+
+- **Concept:** Decouples browser automation behind the `BrowserServiceAdapter` interface and validates origin scoping (allowing `example.invalid`, rejecting unauthorized origins) and action budgets (failing on 4th step under a 3-step limit) using `OfflineLocalBrowserAdapter`. Explicitly lists 6 real-service behaviors that the offline mock does not establish.
+- **Fixture:** Uses a deterministic, in-memory local adapter requiring only the Python standard library (no Playwright browser binaries, GPUs, or cloud credentials required).
+- **Invocation & Verification:**
+  ```bash
+  python3 15-browser-use/applied-labs/r17-t025/example.py
+  python3 -m unittest discover -s 15-browser-use/applied-labs/r17-t025 -p "test_*.py" -v
+  ```
+- **Expected Output:** Steps 1-3 complete successfully through the offline adapter; the 4th step is blocked by `StepBudgetExceededError`; navigation to unauthorized origins raises `DisallowedOriginError` without altering adapter state.
+- **Scope & Limitations:** Explicitly labeled as a local simulation stub modeling adapter decoupling. It does not establish real network negotiation, client-side JS rendering, or browser sandbox isolation.
+
 ### Real-World Applications
 
 - Travel booking and price monitoring
