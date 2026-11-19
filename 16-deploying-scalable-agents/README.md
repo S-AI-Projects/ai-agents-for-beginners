@@ -388,6 +388,36 @@ The next lesson takes the opposite journey: instead of scaling agents up into th
 - <a href="https://github.com/marketplace/actions/ai-smoke-test" target="_blank">AI Smoke Test GitHub Action</a>
 - <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol (MCP)</a>
 
+## Applied Lab: Trace Aggregation by Request ID
+
+A small runnable example that extends this lesson: [applied-labs/r17-t031](./applied-labs/r17-t031/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 16-deploying-scalable-agents/applied-labs/r17-t031/example.py
+```
+
+```text
+{
+  "A": {
+    "duration_ms": 12,
+    "tool_calls": 2,
+    "status": "success"
+  },
+  "B": {
+    "duration_ms": 7,
+    "tool_calls": 0,
+    "status": "failure"
+  },
+  "C": {
+    "duration_ms": null,
+    "tool_calls": 1,
+    "status": "incomplete"
+  }
+}
+```
+
+This is a simulation with hand-written trace records, not OpenTelemetry or Foundry behavior. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Building Computer Use Agents (CUA)](../15-browser-use/README.md)
