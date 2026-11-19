@@ -141,6 +141,29 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 
 After you learn to deploy agents in [Lesson 16](../16-deploying-scalable-agents/README.md), you can smoke-test this lesson's `TravelRAGAgent` — checking that its answers stay grounded in the knowledge base — with [`tests/lesson-05-smoke-tests.json`](../tests/lesson-05-smoke-tests.json). See [`tests/README.md`](../tests/README.md) for how to run it.
 
+## Applied Lab: Lexical Retrieval State Trace
+
+A small runnable example that extends this lesson: [applied-labs/r17-t033](./applied-labs/r17-t033/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 05-agentic-rag/applied-labs/r17-t033/example.py
+```
+
+```text
+red apple -> [('A', 2), ('B', 1)]
+   normalize ['apple', 'red']
+   score {'A': 2, 'B': 1, 'C': 0}
+   rank ['A', 'B', 'C']
+   filter ['A', 'B']
+ocean -> []
+   normalize ['ocean']
+   score {'A': 0, 'B': 0, 'C': 0}
+   rank ['A', 'B', 'C']
+   filter []
+```
+
+This is a lexical test double, not a production vector search. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Tool Use Design Pattern](../04-tool-use/README.md)
