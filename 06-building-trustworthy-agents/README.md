@@ -135,6 +135,20 @@ To build trustworthy AI agents, it is important to understand and mitigate the r
 
 **Mitigation**: AI agents should have access to systems on a need-only basis to prevent these types of attacks. Communication between the agent and system should also be secure. Implementing authentication and access control is another way to protect this information.
 
+### Applied Example: Allowlisted Action Policy (Lab R17-T027)
+
+For an applied, runnable implementation of pre-execution tool allowlisting and per-tool argument validation, see [applied-labs/r17-t027](./applied-labs/r17-t027/README.md).
+
+- **Concept:** Enforces explicit tool allowlisting (`read` is allowed; `delete` is blocked) and parameter schema validation (requiring non-empty `path`). Demonstrates that invalid or unauthorized actions are refused prior to execution and never reach the underlying executor stub.
+- **Fixture:** Uses a deterministic, in-memory `AllowedActionPolicy` and `GuardedActionDispatcher` requiring only the Python standard library (no Azure credentials, live LLMs, or real OS operations required).
+- **Invocation & Verification:**
+  ```bash
+  python3 06-building-trustworthy-agents/applied-labs/r17-t027/example.py
+  python3 -m unittest discover -s 06-building-trustworthy-agents/applied-labs/r17-t027 -p "test_*.py" -v
+  ```
+- **Expected Output:** Authorized `read(path="...")` succeeds; unauthorized `delete` raises `DisallowedToolError`; missing `path` raises `ArgumentValidationError`; in both failure cases, the executor stub call count remains 0.
+- **Scope & Limitations:** Explicitly labeled as a local contract fixture modeling pre-execution policy enforcement; it does not perform real operating system access control or live enterprise authentication.
+
 ### Resource and Service Overloading
 
 **Description:** AI agents can access different tools and services to complete tasks. Attackers can use this ability to attack these services by sending a high volume of requests through the AI Agent, which may result in system failures or high costs.
