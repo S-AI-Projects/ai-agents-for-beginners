@@ -351,6 +351,23 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 
 After you learn to deploy agents in [Lesson 16](../16-deploying-scalable-agents/README.md), you can smoke-test this lesson's `TravelToolAgent` (does it still call its tools and answer?) with [`tests/lesson-04-smoke-tests.json`](../tests/lesson-04-smoke-tests.json). See [`tests/README.md`](../tests/README.md) for how to run it.
 
+## Applied Lab: Typed Tool Dispatch
+
+A small runnable example that extends this lesson: [applied-labs/r17-t037](./applied-labs/r17-t037/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 04-tool-use/applied-labs/r17-t037/example.py
+```
+
+```text
+{"tool": "add", "args": {"a": 2, "b": 3}} -> {"ok": true, "result": 5}
+{"tool": "multiply", "args": {"a": 2, "b": 3}} -> {"ok": true, "result": 6}
+{"tool": "divide", "args": {"a": 2, "b": 3}} -> {"ok": false, "error": "unknown_tool"}
+{"tool": "add", "args": {"a": "2", "b": 3}} -> {"ok": false, "error": "invalid_arguments"}
+```
+
+This is a local contract fixture, not a full MCP transport implementation. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Understanding Agentic Design Patterns](../03-agentic-design-patterns/README.md)
