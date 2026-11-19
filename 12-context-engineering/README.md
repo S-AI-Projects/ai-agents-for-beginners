@@ -171,6 +171,21 @@ Let's say we want an AI agent to **"Book me a trip to Paris."**
 ## Got More Questions About Context Engineering?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
+## Applied Lab: Prompt Template Failure and Recovery
+
+A small runnable example that extends this lesson: [applied-labs/r17-t038](./applied-labs/r17-t038/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 12-context-engineering/applied-labs/r17-t038/example.py
+```
+
+```text
+{'ok': False, 'error': 'missing variables: topic'}
+{'ok': True, 'messages': [{'role': 'system', 'content': 'You are a concise study assistant.'}, {'role': 'user', 'content': 'Hello Asha, please summarize {weather} reports.'}]}
+```
+
+Templating alone does not prevent prompt injection. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Agentic Protocols](../11-agentic-protocols/README.md)
