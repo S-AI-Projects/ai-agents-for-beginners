@@ -126,6 +126,20 @@ Let's say we want an AI agent to **"Book me a trip to Paris."**
 
 - Then, an example response could be:  "Hey [Your Name]! I see you're free the first week of October. Shall I look for direct flights to Paris on [Preferred Airline] within your usual budget of [Budget]?". This richer, context-aware response demonstrates the power of context engineering.
 
+### Applied Example: Prompt-Template Escaping — Refactored Architecture (Lab R17-T026)
+
+For an applied, runnable implementation demonstrating the refactoring of a monolithic template engine by extracting the `TemplateVariableValidator` responsibility, see [applied-labs/r17-t026](./applied-labs/r17-t026/README.md).
+
+- **Concept:** Refactors a baseline monolithic renderer by extracting parameter validation into a dedicated `TemplateVariableValidator`. Proves 100% before/after behavioral equivalence: enforces required variables (`name`, `topic`), raises `MissingVariableError` on missing keys, and ensures braces inside user data remain literal characters.
+- **Fixture:** Uses an in-memory deterministic renderer requiring only the Python standard library (no cloud API keys, external models, or GPUs required).
+- **Invocation & Verification:**
+  ```bash
+  python3 12-context-engineering/applied-labs/r17-t026/example.py
+  python3 -m unittest discover -s 12-context-engineering/applied-labs/r17-t026 -p "test_*.py" -v
+  ```
+- **Expected Output:** Baseline and refactored renderers produce identical outputs on valid inputs; missing `topic` fails identically with `MissingVariableError`; user braces remain literal; and deliberate wrong assertion checks exit non-zero.
+- **Scope & Limitations:** Explicitly labeled as a local architectural refactoring fixture. Templating establishes field boundaries, but does not alone prevent semantic prompt injection.
+
 ## Common Context Failures
 
 ### Context Poisoning
