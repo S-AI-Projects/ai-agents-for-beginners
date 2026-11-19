@@ -152,6 +152,20 @@ print(analysis_result)
 
 What you see in the previous code is how you can create a task that involves multiple agents working together to analyze data. Each agent performs a specific function, and the task is executed by coordinating the agents to achieve the desired outcome. By creating dedicated agents with specialized roles, you can improve task efficiency and performance.
 
+### Applied Example: Agent-Component Routing and State Trace (Lab R17-T024)
+
+For an applied, runnable implementation of explicit agent-component routing and step-by-step state tracing, see [applied-labs/r17-t024](./applied-labs/r17-t024/README.md).
+
+- **Concept:** Routes incoming user requests to specialized component handlers using explicit intent policies (`help` → `support`, `calculate` → `calculator`, `unknown` → `fallback`), resolves ambiguous queries using documented rule priority, logs auditable decision records, and formally tests invariants linking intermediate state snapshots to final outputs.
+- **Fixture:** Uses a deterministic, in-memory router fixture requiring only the Python standard library (no cloud credentials, external APIs, or GPUs required).
+- **Invocation & Verification:**
+  ```bash
+  python3 02-explore-agentic-frameworks/applied-labs/r17-t024/example.py
+  python3 -m unittest discover -s 02-explore-agentic-frameworks/applied-labs/r17-t024 -p "test_*.py" -v
+  ```
+- **Expected Output:** Single-intent queries route to their respective handlers; ambiguous queries resolve to `support` via `RULE_HELP_PRIORITY`; 5 lifecycle states (`RECEIVED`, `ANALYZED`, `ROUTED`, `DISPATCHED`, `COMPLETED`) are recorded; and state invariants pass verification.
+- **Scope & Limitations:** Explicitly labeled as a local architectural simulation modeling routing and state invariant mechanics; it does not deploy live multi-agent clusters to cloud infrastructure.
+
 ### Learn in Real-Time
 
 Advanced frameworks provide capabilities for real-time context understanding and adaptation.
