@@ -137,6 +137,21 @@ Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to m
 - <a href="https://arxiv.org/abs/2305.11738" target="_blank">2305.11738 CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing</a>
 - <a href="https://arxiv.org/abs/2501.09136" target="_blank">2501.09136 Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG</a>
 
+## Applied Lab: Retrieval Behind a Callable Interface
+
+A small runnable example that extends this lesson: [applied-labs/r17-t034](./applied-labs/r17-t034/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 05-agentic-rag/applied-labs/r17-t034/example.py
+```
+
+```text
+{'query': 'red apple', 'status': 'found', 'sources': ['A', 'B']}
+{'query': 'ocean', 'status': 'no_match', 'sources': []}
+```
+
+This is a lexical test double, not a production vector search, and it does not establish real-service behavior. See the lab README for scope and limitations.
+
 ## Smoke-Testing This Agent (Optional)
 
 After you learn to deploy agents in [Lesson 16](../16-deploying-scalable-agents/README.md), you can smoke-test this lesson's `TravelRAGAgent` — checking that its answers stay grounded in the knowledge base — with [`tests/lesson-05-smoke-tests.json`](../tests/lesson-05-smoke-tests.json). See [`tests/README.md`](../tests/README.md) for how to run it.
