@@ -430,6 +430,27 @@ A runnable version of this example lives in [code-samples/14-langchain-hosted-ag
 
 Code samples for Microsoft Agent Framework can be found in this repository under `xx-python-agent-framework` and `xx-dotnet-agent-framework` files.
 
+## Applied Lab: Bounded Agent Loop — Failure and Recovery
+
+For a hands-on, zero-dependency demonstration of loop budget constraints, stop invariants, action tracing, and error recovery in agent orchestration, see the [Bounded Agent Loop Applied Lab](./applied-labs/r17-t028/README.md).
+
+### Quick Invocation
+
+```bash
+# Run concept demonstration
+python3 14-microsoft-agent-framework/applied-labs/r17-t028/example.py
+
+# Run automated verification suite
+python3 -m unittest discover -s 14-microsoft-agent-framework/applied-labs/r17-t028 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Step Budgeting**: Agent fixture limits loop execution to at most 3 steps. An endless plan terminates with status `budget_exceeded`.
+- **Normal Termination**: Sequentially executing `[inspect, answer, stop]` terminates normally with status `completed`.
+- **Stop Invariant**: Once `stop` is reached, all loop activity halts; no tool is called after stop.
+- **Error Explanation & Recovery**: Inspecting missing or invalid data records a structured `MISSING_DATA` trace with remediation context, followed by recovery on subsequent valid inputs.
+- **Educational Scope**: Pure Python 3 standard library simulation modeling MAF execution dynamics without requiring Azure credentials, live LLM deployments, or cloud GPU infrastructure.
+
 ## Got More Questions About Microsoft Agent Framework?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
