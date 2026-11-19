@@ -295,6 +295,27 @@ In this lesson you built an agent that runs entirely on your own machine:
 
 This completes the deployment arc: Lesson 16 scaled agents up into Microsoft Foundry, and this lesson scaled them down onto a single workstation. The next lesson turns to keeping deployed agents secure.
 
+## Applied Lab: Model-Manifest Selection — Scenario Assessment
+
+For a hands-on, zero-dependency implementation of hardware constraint screening, diagnostic reporting, and applied scenario assessments, see the [Model-Manifest Selection Applied Lab](./applied-labs/r17-t030/README.md).
+
+### Quick Invocation
+
+```bash
+# Run model selector & applied assessment questions
+python3 17-creating-local-ai-agents/applied-labs/r17-t030/example.py
+
+# Run automated verification suite
+python3 -m unittest discover -s 17-creating-local-ai-agents/applied-labs/r17-t030 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Manifest Screening**: Evaluates candidate models against workstation RAM budget and requested context window.
+- **Canonical Scenario**: Fixture A (RAM 4 GB / context 2048) and Fixture B (RAM 8 GB / context 4096) with budget RAM 6 GB and requested context 1024 tokens admits only Fixture A.
+- **Actionable Diagnostics**: Excluded models report explicit error codes (`EXCEEDS_RAM_BUDGET`, `INSUFFICIENT_CONTEXT`) with remediation guidance.
+- **Scenario Assessments**: Includes three applied questions (predict an output, diagnose a failure, choose an inclusive boundary policy) with executable checks.
+- **Educational Scope**: Pure Python 3 standard library simulation using synthetic teaching fixtures; does not represent claims about named commercial models.
+
 ## Additional Resources
 
 - <a href="https://learn.microsoft.com/azure/ai-foundry/foundry-local/" target="_blank">Microsoft Foundry Local documentation</a>
