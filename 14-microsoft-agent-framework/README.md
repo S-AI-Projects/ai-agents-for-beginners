@@ -433,6 +433,23 @@ Code samples for Microsoft Agent Framework can be found in this repository under
 ## Got More Questions About Microsoft Agent Framework?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
+## Applied Lab: Bounded Agent Loop
+
+A small runnable example that extends this lesson: [applied-labs/r17-t032](./applied-labs/r17-t032/README.md). It uses only the Python standard library and local fixtures.
+
+```bash
+python3 14-microsoft-agent-framework/applied-labs/r17-t032/example.py
+```
+
+```text
+normal: completed ['inspect', 'answer', 'stop']
+endless: budget_exceeded ['inspect', 'inspect', 'inspect']
+stop first: completed ['stop']
+stop at step 4: budget_exceeded ['inspect', 'inspect', 'inspect']
+```
+
+This is a simulation with a scripted plan, not Microsoft Agent Framework behavior. See the lab README for scope and limitations.
+
 ## Previous Lesson
 
 [Memory for AI Agents](../13-agent-memory/README.md)
