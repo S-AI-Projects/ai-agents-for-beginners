@@ -167,6 +167,25 @@ Consider our travel booking website again, but this time, it's powered by NLWeb.
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Bounded Conversation Memory with State Trace (R17-T044)
+
+For an applied, zero-dependency educational laboratory implementing bounded conversational memory, FIFO sliding window eviction, defensive copy immutability, and intermediate state tracing across agent protocol boundaries, see the [Bounded Conversation Memory Applied Lab](./applied-labs/r17-t044/README.md).
+
+### Quick Invocation
+
+```bash
+# Run memory sliding window demonstration & inspect state trace
+python3 11-agentic-protocols/applied-labs/r17-t044/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 11-agentic-protocols/applied-labs/r17-t044 -p "test_*.py"
+```
+
+### Key Contract & Invariant Guarantees
+- **Bounded Capacity**: Sliding window holds at most 3 records in chronological arrival order (e.g., adding `A`, `B`, `C`, `D` retains `['B', 'C', 'D']`).
+- **Defensive Copy Immutability**: All retrieval methods return defensive copies, ensuring external callers cannot modify or tamper with internal memory state.
+- **Formal State Trace**: Captures an immutable `StateSnapshot` at each transition recording actions, additions, evictions, memory state, and formal capacity invariant validation.
+
 ## Resources
 
 - [MCP for Beginners](https://aka.ms/mcp-for-beginners)  
