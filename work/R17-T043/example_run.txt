@@ -1,0 +1,31 @@
+=== Multi-Agent Routing Agent with Offline Adapter (R17-T043) ===
+
+User Query: "Help me reset my password"
+  Handler : support
+  Message : SupportAgent: Connected to customer support for request: 'Help me reset my password'. How can we assist you?
+
+User Query: "Can you calculate 25 * 4?"
+  Handler : calculator
+  Message : CalculatorAgent: Processed calculation query: 'Can you calculate 25 * 4?'. Result: 100.0
+
+User Query: "Help me calculate my monthly invoice cost please"
+  Handler : support
+  Message : SupportAgent: Connected to customer support for request: 'Help me calculate my monthly invoice cost please'. How can we assist you?
+
+User Query: "Tell me a joke about bananas"
+  Handler : fallback
+  Message : FallbackAgent: We could not determine an exact handler for: 'Tell me a joke about bananas'. Available services: 'support' (help/troubleshooting) and 'calculator' (math/computations).
+
+--- Auditable Decision Log ---
+[1] Handler: support    | Priority Applied: False | Reason: Direct intent match for support/help.
+[2] Handler: calculator | Priority Applied: False | Reason: Direct intent match for calculate/calculator.
+[3] Handler: support    | Priority Applied: True  | Reason: Ambiguous intents ['support', 'calculator'] resolved to 'support' via documented priority order (support > calculator > fallback).
+[4] Handler: fallback   | Priority Applied: False | Reason: Unrecognized input intent; routed to fallback handler.
+
+--- Unsimulated Real-Service Behaviors ---
+• network_latency: The mock executes synchronously in-memory with sub-millisecond execution, omitting network...
+• token_rate_limits: The mock does not enforce API rate limits (TPM - Tokens Per Minute, RPM - Requests Per Min...
+• probabilistic_llm_drift: The mock utilizes deterministic heuristic pattern matching. Real LLMs with non-zero temper...
+• context_window_and_truncation: The mock does not simulate token context limits (e.g., 8k/32k/128k context windows), token...
+• authentication_and_authorization: The mock operates without Entra ID / API key credential validation, token expiry, or multi...
+• service_availability_and_transient_failures: The mock does not simulate partial outages, HTTP 5xx gateway errors, connection drops, or ...

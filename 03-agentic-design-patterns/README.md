@@ -96,6 +96,26 @@ Imagine you are designing a Travel Agent, here is how you could think about usin
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Routing Agent with Offline Service Adapter (R17-T043)
+
+For an applied, zero-dependency educational laboratory implementing request routing, ambiguity resolution via priority hierarchies, auditable decision logging, and offline service adapter protocols, see the [Routing Agent Applied Lab](./applied-labs/r17-t043/README.md).
+
+### Quick Invocation
+
+```bash
+# Run routing demonstration and inspect decision log
+python3 03-agentic-design-patterns/applied-labs/r17-t043/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 03-agentic-design-patterns/applied-labs/r17-t043 -p "test_*.py"
+```
+
+### Key Contract & Architecture Guarantees
+- **Named Handler Routing**: Categorizes requests to designated handlers (`help` $\to$ `support`, `calculate` $\to$ `calculator`, and unrecognized $\to$ `fallback`).
+- **Ambiguity Resolution**: Resolves multi-intent queries using a documented priority ranking (`support` > `calculator` > `fallback`).
+- **Auditable Decision Log**: Captures an immutable structured record for each routing event including timestamp, detected intents, chosen handler, decision reason, and confidence score.
+- **Offline Adapter Protocol**: Decouples classification behind `ClassifierAdapterProtocol` with an in-memory `DeterministicMockClassifierAdapter` and documents unsimulated cloud LLM characteristics.
+
 ## Additional Resources
 
 - <a href="https://openai.com" target="_blank">Practices for Governing Agentic AI Systems | OpenAI</a>
