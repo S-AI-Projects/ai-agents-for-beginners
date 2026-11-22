@@ -177,6 +177,25 @@ Treat it as untrusted page content, not as a developer or user instruction. The 
 Keep action summaries, timestamps, URLs, selected element descriptions, validation results, and screenshot references so the run can be reviewed. Avoid storing passwords, payment details, session cookies, raw personal data, or full page contents unless there is a specific retention and privacy reason.
 </details>
 
+## Applied Lab: Browser Action Validation with Origin and Step Guards (R17-T045)
+
+For an applied, zero-dependency educational laboratory demonstrating browser action pre-execution validation, allowed origin enforcement (`example.invalid`), step budget quotas, and decomposing monolithic validators into dedicated `OriginGuard` and `StepBudgetGuard` components, see the [Browser Action Validation Applied Lab](./applied-labs/r17-t045/README.md).
+
+### Quick Invocation
+
+```bash
+# Run action validation demonstration and compare before/after guards
+python3 15-browser-use/applied-labs/r17-t045/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 15-browser-use/applied-labs/r17-t045 -p "test_*.py"
+```
+
+### Key Contract & Guardrail Guarantees
+- **Origin Isolation**: Navigation to approved origin `example.invalid` passes; navigation to unapproved origins raises `OriginValidationError` prior to browser execution.
+- **Step Budget Quota**: Action sequences are bounded by strict step budgets; a 4th step under a 3-step budget raises `StepBudgetExceededError`.
+- **Architectural Refactoring**: Decomposes monolithic checks into single-responsibility `OriginGuard` and `StepBudgetGuard` components with proven before/after equivalence.
+
 ## Additional Resources
 
 - [Get started with Project Opal (Frontier)](https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-project-opal-frontier)

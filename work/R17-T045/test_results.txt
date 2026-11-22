@@ -1,0 +1,21 @@
+test_before_after_refactoring_equivalence_matrix (test_example.TestBrowserActionValidation.test_before_after_refactoring_equivalence_matrix)
+Extensive fixture suite verifies complete equivalence between monolithic and decomposed validators. ... ok
+test_fourth_step_fails_under_three_step_budget (test_example.TestBrowserActionValidation.test_fourth_step_fails_under_three_step_budget)
+A 4th step fails under a 3-step budget with StepBudgetExceededError in both. ... ok
+test_navigation_to_allowed_origin_passes (test_example.TestBrowserActionValidation.test_navigation_to_allowed_origin_passes)
+Navigation to allowed 'example.invalid' passes under both validators. ... ok
+test_navigation_to_disallowed_origin_rejected (test_example.TestBrowserActionValidation.test_navigation_to_disallowed_origin_rejected)
+Navigation to disallowed origin raises OriginValidationError before execution in both. ... ok
+test_normalize_origin_helper (test_example.TestBrowserActionValidation.test_normalize_origin_helper)
+normalize_origin accurately extracts hostnames across multiple URL variations. ... ok
+test_origin_guard_standalone (test_example.TestBrowserActionValidation.test_origin_guard_standalone)
+OriginGuard works as an independent modular guard. ... ok
+test_step_budget_boundaries (test_example.TestBrowserActionValidation.test_step_budget_boundaries)
+Tests 0, 1, 2, and 3 steps under a 3-step budget (all must pass). ... ok
+test_step_budget_guard_standalone (test_example.TestBrowserActionValidation.test_step_budget_guard_standalone)
+StepBudgetGuard works as an independent modular guard. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK
