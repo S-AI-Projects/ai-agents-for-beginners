@@ -391,6 +391,25 @@ The Microsoft Agent Framework also integrates with Azure services through `Found
 - Python: [Agent Framework (Azure OpenAI Responses API)](./code_samples/02-python-agent-framework-azure-openai.ipynb)
 - .NET: [Agent Framework](./code_samples/02-dotnet-agent-framework.md)
 
+## Applied Lab: Request Router with Failure and Recovery (R17-T047)
+
+For an applied, zero-dependency educational laboratory demonstrating request routing across framework handlers, ambiguity resolution via documented priority, input validation, and recovering cleanly from malformed requests, see the [Request Router Applied Lab](./applied-labs/r17-t047/README.md).
+
+### Quick Invocation
+
+```bash
+# Run router demonstration with failure and recovery walkthrough
+python3 02-explore-agentic-frameworks/applied-labs/r17-t047/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 02-explore-agentic-frameworks/applied-labs/r17-t047 -p "test_*.py"
+```
+
+### Key Contract & Resilience Guarantees
+- **Intent Routing**: Routes `help` $\to$ `support`, `calculate` $\to$ `calculator`, and unrecognized $\to$ `fallback`.
+- **Ambiguity Priority**: Resolves overlapping intents via documented priority (`support` > `calculator` > `fallback`).
+- **Failure & Recovery**: Rejects invalid, empty, or malformed inputs with `InvalidRequestError` while ensuring subsequent valid queries route successfully without framework state corruption.
+
 ## Got More Questions about AI Agent Frameworks?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.

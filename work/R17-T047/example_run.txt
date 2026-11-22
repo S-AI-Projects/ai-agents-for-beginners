@@ -1,0 +1,35 @@
+=== Request Router with Failure and Recovery (R17-T047) ===
+
+1. Standard Routing Contract:
+  Query: "I need help with login"
+    -> Handler: support (Expected: support)
+    -> Message: SupportAgent: Resolved customer support request for 'I need help with login'.
+
+  Query: "Calculate 42 / 7"
+    -> Handler: calculator (Expected: calculator)
+    -> Message: CalculatorAgent: Computed result for calculation request 'Calculate 42 / 7'.
+
+  Query: "Tell me a random riddle"
+    -> Handler: fallback (Expected: fallback)
+    -> Message: FallbackAgent: Handled unrecognized query 'Tell me a random riddle' with standard guidance.
+
+  Query: "Help me calculate my travel budget"
+    -> Handler: support (Expected: support)
+    -> Message: SupportAgent: Resolved customer support request for 'Help me calculate my travel budget'.
+
+2. Failure & Recovery Walkthrough:
+  Attempting invalid input: '   '
+  [EXPECTED ERROR CAUGHT] InvalidRequestError: Invalid request rejected: Request cannot be empty or whitespace-only (received: '   ')
+
+  Executing immediate subsequent valid request to prove recovery...
+  [RECOVERY SUCCESS] Handler: support | Message: SupportAgent: Resolved customer support request for 'Help me recover my account'.
+
+3. Audit Trail Summary:
+  [1] SUCCESS | Handler: support    | Input: 'I need help with login'
+  [2] SUCCESS | Handler: calculator | Input: 'Calculate 42 / 7'
+  [3] SUCCESS | Handler: fallback   | Input: 'Tell me a random riddle'
+  [4] SUCCESS | Handler: support    | Input: 'Help me calculate my travel budget'
+  [5] ERROR   | Type: InvalidRequestError | Message: Invalid request rejected: Request cannot be empty or whitespace-only (received: '   ')
+  [6] SUCCESS | Handler: support    | Input: 'Help me recover my account'
+
+All demonstrations executed successfully.
