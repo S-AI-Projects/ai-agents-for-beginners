@@ -1,0 +1,25 @@
+test_ambiguous_intent_resolved_by_priority (test_example.TestIntentRouter.test_ambiguous_intent_resolved_by_priority)
+Ambiguous request containing both help and calculate resolves to 'support' by priority. ... ok
+test_auditable_decision_log_records_all_fields (test_example.TestIntentRouter.test_auditable_decision_log_records_all_fields)
+Every routing decision is captured in an auditable structured log. ... ok
+test_custom_adapter_injection (test_example.TestIntentRouter.test_custom_adapter_injection)
+Router supports injecting custom classification adapters. ... ok
+test_custom_handler_injection (test_example.TestIntentRouter.test_custom_handler_injection)
+Router allows registering custom handler implementations. ... ok
+test_decision_log_immutability_protection (test_example.TestIntentRouter.test_decision_log_immutability_protection)
+Mutating the exposed decision log list does not affect internal audit state. ... ok
+test_offline_adapter_protocol_compliance (test_example.TestIntentRouter.test_offline_adapter_protocol_compliance)
+DeterministicMockClassifierAdapter complies with ClassifierAdapterProtocol. ... ok
+test_route_calculate_to_calculator_handler (test_example.TestIntentRouter.test_route_calculate_to_calculator_handler)
+Requests with calculate/arithmetic intents route to 'calculator' handler. ... ok
+test_route_help_to_support_handler (test_example.TestIntentRouter.test_route_help_to_support_handler)
+Requests with help/support intents route to 'support' handler. ... ok
+test_route_unknown_to_fallback_handler (test_example.TestIntentRouter.test_route_unknown_to_fallback_handler)
+Unrecognized requests route to 'fallback' handler. ... ok
+test_unsimulated_real_service_behaviors_documented (test_example.TestIntentRouter.test_unsimulated_real_service_behaviors_documented)
+All required unsimulated real-service behaviors are documented explicitly. ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
