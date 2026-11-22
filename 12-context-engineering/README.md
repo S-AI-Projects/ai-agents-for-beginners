@@ -168,6 +168,25 @@ Let's say we want an AI agent to **"Book me a trip to Paris."**
 
 **Solution:** Implement **context pruning**. When a new instruction contradicts an old one, the older instruction is removed or explicitly overridden in the context. Alternatively, the agent can use a **scratchpad** to reconcile conflicting preferences before deciding, ensuring only the final, consistent instruction guides its actions.
 
+## Applied Lab: Safe Template Rendering and Context Evaluation (R17-T048)
+
+For an applied, zero-dependency educational laboratory demonstrating safe variable substitution into prompt templates, literal brace preservation (avoiding nested key evaluation), rejecting missing variables, benchmarking 3 controlled payload variations, and understanding prompt injection boundaries, see the [Safe Template Rendering Applied Lab](./applied-labs/r17-t048/README.md).
+
+### Quick Invocation
+
+```bash
+# Run template rendering demonstration & benchmark 3 payload variations
+python3 12-context-engineering/applied-labs/r17-t048/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 12-context-engineering/applied-labs/r17-t048 -p "test_*.py"
+```
+
+### Key Contract & Security Guarantees
+- **Strict Variable Resolution**: Declared variables (`{key}` and `{{key}}`) are substituted cleanly; undeclared variables raise `MissingTemplateVariableError`.
+- **Literal Brace Isolation**: Braces and JSON fragments in user data remain literal and are never evaluated as nested template expressions.
+- **Security Boundary**: Explicitly documents that safe templating guarantees syntactic isolation, but templating alone does not prevent semantic prompt injection.
+
 ## Got More Questions About Context Engineering?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.

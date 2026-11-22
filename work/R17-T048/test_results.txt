@@ -1,0 +1,21 @@
+test_canonical_variable_rendering (test_example.TestSafeTemplateRenderer.test_canonical_variable_rendering)
+Templates render successfully using declared variables. ... ok
+test_empty_template_and_empty_variables (test_example.TestSafeTemplateRenderer.test_empty_template_and_empty_variables)
+Empty templates and non-variable templates render cleanly. ... ok
+test_evaluation_experiment_benchmarks_three_variations (test_example.TestSafeTemplateRenderer.test_evaluation_experiment_benchmarks_three_variations)
+Evaluation experiment benchmarks 3 controlled variations with all invariants passing. ... ok
+test_literal_braces_in_user_data_never_evaluated (test_example.TestSafeTemplateRenderer.test_literal_braces_in_user_data_never_evaluated)
+Braces inside user data remain literal and are NEVER evaluated as nested template keys. ... ok
+test_missing_variable_raises_exception (test_example.TestSafeTemplateRenderer.test_missing_variable_raises_exception)
+Missing placeholder variable raises MissingTemplateVariableError identifying missing key. ... ok
+test_nested_macro_injection_does_not_expand (test_example.TestSafeTemplateRenderer.test_nested_macro_injection_does_not_expand)
+Nested macro syntax like {{7*7}} or {eval(x)} in user data is treated as plain text. ... ok
+test_referenced_keys_property (test_example.TestSafeTemplateRenderer.test_referenced_keys_property)
+SafeTemplateRenderer correctly exposes all declared keys in template. ... ok
+test_security_disclaimer_presence_and_claims (test_example.TestSafeTemplateRenderer.test_security_disclaimer_presence_and_claims)
+Does NOT claim templating alone prevents prompt injection; documents semantic limits. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK
