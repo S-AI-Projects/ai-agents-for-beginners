@@ -185,6 +185,27 @@ In this lesson, we've looked at the multi-agent design pattern, including the sc
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Dependency-Plan Validation & Topological Ordering (R17-T041)
+
+For an applied, zero-dependency implementation of dependency plan validation, cycle detection, and topological agent task scheduling, see the [Dependency-Plan Validation Applied Lab](./applied-labs/r17-t041/README.md).
+
+### Quick Invocation
+
+```bash
+# Run plan validator & boundary demonstrations
+python3 08-multi-agent/applied-labs/r17-t041/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 08-multi-agent/applied-labs/r17-t041 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Topological Ordering**: Canonical plan (`A` has no dependencies, `B` depends on `A`, `C` depends on `B`) orders deterministically as `["A", "B", "C"]`.
+- **Missing Dependency Detection**: Tasks declaring unknown dependencies are rejected immediately and report the missing task ID (`MissingDependencyError`).
+- **Deadlock / Cycle Rejection**: Circular dependencies (such as `A -> B -> A`) are detected before execution and rejected (`CycleDetectedError`).
+- **Boundary Invariants**: Accommodates empty plans (`{}` $\to$ `[]`), single-task plans (`{"A": []}` $\to$ `["A"]`), and parallel/diamond graphs with deterministic tie-breaking.
+- **Educational Scope**: Pure Python 3 standard library simulation using synthetic teaching fixtures; requires no external APIs, cloud services, GPUs, or trained model downloads.
+
 ## Additional resources
 
 - <a href="https://learn.microsoft.com/azure/ai-services/agents/overview" target="_blank">Microsoft Agent Framework documentation</a>
