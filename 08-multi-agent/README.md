@@ -185,6 +185,26 @@ In this lesson, we've looked at the multi-agent design pattern, including the sc
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Comparative Topological Sorting — Kahn vs DFS (R17-T042)
+
+For an applied, zero-dependency educational laboratory comparing Kahn's algorithm (in-degree BFS queue) against DFS post-order traversal with reverse for multi-agent task planning, see the [Comparative Topological Sorting Applied Lab](./applied-labs/r17-t042/README.md).
+
+### Quick Invocation
+
+```bash
+# Run comparative algorithm demonstrations across DAG fixtures
+python3 08-multi-agent/applied-labs/r17-t042/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 08-multi-agent/applied-labs/r17-t042 -p "test_*.py"
+```
+
+### Key Contract & Equivalence Guarantees
+- **Topological Sorting**: Both Kahn's algorithm and DFS post-order reverse produce valid execution schedules satisfying all dependency prerequisites before dependent tasks.
+- **Cycle & Deadlock Rejection**: Circular dependencies ($A \leftrightarrow B$, self-cycles, multi-hop loops) are rejected immediately by raising `CycleDetectedError`.
+- **Missing Dependency Diagnosis**: Tasks declaring unregistered dependencies are rejected prior to execution, surfacing the missing task ID with `MissingDependencyError`.
+- **Structural Comparison**: Kahn's algorithm yields level-by-level (BFS) batches ideal for parallel agent dispatch, while DFS post-order yields branch-first execution sequences.
+
 ## Additional resources
 
 - <a href="https://learn.microsoft.com/azure/ai-services/agents/overview" target="_blank">Microsoft Agent Framework documentation</a>

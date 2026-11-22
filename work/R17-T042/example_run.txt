@@ -1,0 +1,33 @@
+=== Multi-Agent Comparative Topological Sorting (R17-T042) ===
+
+--- Canonical Linear Plan ---
+  Plan: {'A': [], 'B': ['A'], 'C': ['B']}
+  Kahn's Order : ['A', 'B', 'C'] (Valid: True)
+  DFS Order    : ['A', 'B', 'C'] (Valid: True)
+  Identical    : True
+
+--- Diamond DAG ---
+  Plan: {'A': [], 'B': ['A'], 'C': ['A'], 'D': ['B', 'C']}
+  Kahn's Order : ['A', 'B', 'C', 'D'] (Valid: True)
+  DFS Order    : ['A', 'B', 'C', 'D'] (Valid: True)
+  Identical    : True
+
+--- Independent Parallel Tasks ---
+  Plan: {'B': [], 'A': []}
+  Kahn's Order : ['A', 'B'] (Valid: True)
+  DFS Order    : ['A', 'B'] (Valid: True)
+  Identical    : True
+
+--- Multi-Branch Pipeline ---
+  Plan: {'START': [], 'DATA_A': ['START'], 'DATA_B': ['START'], 'PROCESS_A': ['DATA_A'], 'PROCESS_B': ['DATA_B'], 'JOIN': ['PROCESS_A', 'PROCESS_B'], 'REPORT': ['JOIN']}
+  Kahn's Order : ['START', 'DATA_A', 'DATA_B', 'PROCESS_A', 'PROCESS_B', 'JOIN', 'REPORT'] (Valid: True)
+  DFS Order    : ['START', 'DATA_A', 'PROCESS_A', 'DATA_B', 'PROCESS_B', 'JOIN', 'REPORT'] (Valid: True)
+  Identical    : False
+
+--- Error Handling Comparison ---
+1. Cycle Detection (A <-> B):
+   Errors matched between Kahn and DFS: True
+2. Missing Dependency (Task1 -> NON_EXISTENT):
+   Errors matched between Kahn and DFS: True
+
+All comparative demonstrations executed successfully.
