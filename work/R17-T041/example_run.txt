@@ -1,0 +1,21 @@
+=== Multi-Agent Dependency-Plan Validation & Ordering (R17-T041) ===
+
+1. Canonical Scenario:
+   Plan: {'A': [], 'B': ['A'], 'C': ['B']}
+   Topological Order: ['A', 'B', 'C']
+   Execution Trace: ['A', 'B', 'C']
+
+2. Boundary Cases:
+   Empty plan {} -> []
+   Single task {'A': []} -> ['A']
+   Independent tasks {'B': [], 'A': []} -> ['A', 'B']
+
+3. Missing Dependency Scenario:
+   Validating plan: {'B': ['UNKNOWN_X']}
+   Caught Expected Error: Task 'B' declares unknown dependency 'UNKNOWN_X'. Dependency task ID 'UNKNOWN_X' was not found in the plan.
+
+4. Circular Dependency Scenario:
+   Validating plan: {'A': ['B'], 'B': ['A']}
+   Caught Expected Error: Circular dependency detected in plan: A -> B -> A. Execution rejected to prevent infinite deadlocks.
+
+All demonstrations executed successfully.
