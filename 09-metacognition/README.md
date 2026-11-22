@@ -1425,6 +1425,12 @@ Metacognition is a powerful tool that can significantly enhance the capabilities
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab
+
+For a hands-on applied lab on metacognitive routing and self-calibration based on confidence and evidence thresholds:
+
+- [Applied Lab: Metacognitive Routing and Self-Calibration (R17-T050)](./applied-labs/r17-t050/README.md)
+
 ## Previous Lesson
 
 [Multi-Agent Design Pattern](../08-multi-agent/README.md)

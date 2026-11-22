@@ -1,0 +1,68 @@
+test_demonstration_run (test_example.TestMetacognitiveRoutingAndCalibration.test_demonstration_run)
+The concept demonstration executes cleanly and returns expected count of reports. ... ok
+test_evidence_as_sequence_of_items (test_example.TestMetacognitiveRoutingAndCalibration.test_evidence_as_sequence_of_items)
+Evidence passed as a collection/sequence is evaluated by its length. ... ok
+test_invalid_confidence_raises_value_error (test_example.TestMetacognitiveRoutingAndCalibration.test_invalid_confidence_raises_value_error)
+Confidence values strictly outside [0.0, 1.0] raise ValueError. ... ok
+test_invalid_types_raise_type_error (test_example.TestMetacognitiveRoutingAndCalibration.test_invalid_types_raise_type_error)
+Invalid types for confidence or evidence raise TypeError. ... ok
+test_metacognitive_calibrator_diagnostics (test_example.TestMetacognitiveRoutingAndCalibration.test_metacognitive_calibrator_diagnostics)
+MetacognitiveCalibrator correctly assesses over/under/calibrated conditions. ... ok
+test_route_answer_high_confidence_sufficient_evidence (test_example.TestMetacognitiveRoutingAndCalibration.test_route_answer_high_confidence_sufficient_evidence)
+Routing yields ANSWER when confidence >= 0.8 and evidence >= 2. ... ok
+test_route_review_both_below_threshold (test_example.TestMetacognitiveRoutingAndCalibration.test_route_review_both_below_threshold)
+Routing yields REVIEW when both confidence < 0.8 and evidence < 2. ... ok
+test_route_review_insufficient_evidence (test_example.TestMetacognitiveRoutingAndCalibration.test_route_review_insufficient_evidence)
+Routing yields REVIEW when evidence < 2, even if confidence >= 0.8. ... ok
+test_route_review_marginal_confidence_boundary (test_example.TestMetacognitiveRoutingAndCalibration.test_route_review_marginal_confidence_boundary)
+Routing yields REVIEW when confidence < 0.8, even if evidence >= 2. ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK
+======================================================================
+Metacognitive Self-Calibration and Result Routing Demonstration
+======================================================================
+
+[Case 1] Query: What is the refund policy for Contoso basic flight bookings?
+  Stated Confidence   : 0.92
+  Evidence Count      : 2
+  Calibrated Score    : 0.92
+  Calibration Status  : CALIBRATED_ADEQUATE
+  Routing Decision    : >>> ANSWER <<<
+  Rationale           : Agent demonstrated high confidence (0.92 >= 0.80) backed by sufficient empirical evidence (2 >= 2). Approved for immediate autonomous ANSWER.
+
+[Case 2] Query: Can passenger change departure city on non-flexible ticket?
+  Stated Confidence   : 0.88
+  Evidence Count      : 1
+  Calibrated Score    : 0.66
+  Calibration Status  : OVERCONFIDENT
+  Routing Decision    : >>> REVIEW <<<
+  Rationale           : Agent expressed high confidence (0.88) but provided only 1 evidence items (required: 2). Gated to REVIEW to prevent hallucination propagation.
+
+[Case 3] Query: Are pets allowed in the cabin on cross-country flights?
+  Stated Confidence   : 0.79
+  Evidence Count      : 2
+  Calibrated Score    : 0.79
+  Calibration Status  : UNDERCONFIDENT
+  Routing Decision    : >>> REVIEW <<<
+  Rationale           : Agent provided robust evidence (2 items) but expressed conservative confidence (0.79 < 0.80). Routed to REVIEW for safety verification.
+
+[Case 4] Query: What is the lounge access fee for economy ticket holders?
+  Stated Confidence   : 0.40
+  Evidence Count      : 0
+  Calibrated Score    : 0.12
+  Calibration Status  : UNCERTAIN_INSUFFICIENT
+  Routing Decision    : >>> REVIEW <<<
+  Rationale           : Low confidence (0.40) and insufficient evidence (0). Routed to REVIEW for human inspection.
+
+======================================================================
+Core Boundary Verification:
+  confidence=0.80, evidence=2 -> ANSWER
+  confidence=0.79, evidence=2 -> REVIEW
+  confidence=0.80, evidence=1 -> REVIEW
+  confidence=0.79, evidence=1 -> REVIEW
+  confidence=1.20, evidence=2 -> Rejection: Confidence 1.2 is outside valid range [0.0, 1.0].
+  confidence=-0.05, evidence=2 -> Rejection: Confidence -0.05 is outside valid range [0.0, 1.0].
+======================================================================
