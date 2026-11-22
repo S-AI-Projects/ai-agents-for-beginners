@@ -1,0 +1,26 @@
+=== Production Trace Aggregation & Privacy Safeguarding (R17-T046) ===
+
+Input Raw Trace Events:
+  [A] START     @ 1000.0ms | Prompt: 'User query: calculate annual budget and ...'
+  [A] TOOL_CALL @ 1004.0ms | Payload: {'tool_name': 'currency_converter', 'args': {'from': 'USD', 'to': 'EUR'}}
+  [A] TOOL_CALL @ 1009.0ms | Payload: {'tool_name': 'budget_calculator', 'args': {'base': 50000}}
+  [A] END       @ 1012.0ms | Payload: {'status': 'SUCCESS', 'output_tokens': 142}
+  [B] START     @ 2000.0ms | Prompt: 'User query: execute confidential contrac...'
+  [B] TOOL_CALL @ 2005.0ms | Payload: {'tool_name': 'smart_contract_signer', 'args': {'tx_id': '0x987'}}
+  [B] ERROR     @ 2018.0ms | Payload: {'error': 'AuthenticationFailedException', 'error_code': 401}
+  [C] START     @ 3000.0ms | Prompt: 'User query: stream real-time sensor tele...'
+  [C] TOOL_CALL @ 3015.0ms | Payload: {'tool_name': 'iot_sensor_stream', 'args': {'sensor_id': 'temp-1'}}
+
+Processing Aggregation...
+
+Aggregated Metrics by Request ID (Privacy Safeguarded):
+  Request 'A': Status = SUCCESS    | Tool Calls = 2 | Duration = 12.0 ms
+  Request 'B': Status = FAILED     | Tool Calls = 1 | Duration = 18.0 ms
+  Request 'C': Status = INCOMPLETE | Tool Calls = 1 | Duration = None (INCOMPLETE)
+
+Privacy Audit Verification:
+  Request 'A': Fields = ['request_id', 'duration_ms', 'tool_call_count', 'status'] | Prompt Excluded = True
+  Request 'B': Fields = ['request_id', 'duration_ms', 'tool_call_count', 'status'] | Prompt Excluded = True
+  Request 'C': Fields = ['request_id', 'duration_ms', 'tool_call_count', 'status'] | Prompt Excluded = True
+
+All worked example assertions verified successfully.

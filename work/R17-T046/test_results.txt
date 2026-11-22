@@ -1,0 +1,23 @@
+test_canonical_request_a (test_example.TestTraceAggregation.test_canonical_request_a)
+Request A has 2 tool calls, duration 12ms, and status SUCCESS. ... ok
+test_canonical_request_b_failed (test_example.TestTraceAggregation.test_canonical_request_b_failed)
+Request B terminates with ERROR and reports status FAILED. ... ok
+test_canonical_request_c_missing_end_is_incomplete (test_example.TestTraceAggregation.test_canonical_request_c_missing_end_is_incomplete)
+Request C with missing end event is marked INCOMPLETE with duration None (not 0). ... ok
+test_empty_event_stream_returns_empty_dict (test_example.TestTraceAggregation.test_empty_event_stream_returns_empty_dict)
+Empty event stream returns an empty dictionary without errors. ... ok
+test_interleaved_multi_request_stream (test_example.TestTraceAggregation.test_interleaved_multi_request_stream)
+Events from multiple interleaved concurrent requests are properly partitioned. ... ok
+test_privacy_safeguard_omits_prompt_contents (test_example.TestTraceAggregation.test_privacy_safeguard_omits_prompt_contents)
+Prompt contents and raw input payloads are strictly excluded from metrics. ... ok
+test_trace_event_dataclass_objects_handling (test_example.TestTraceAggregation.test_trace_event_dataclass_objects_handling)
+aggregate_trace_events seamlessly accepts TraceEvent dataclass instances. ... ok
+test_worked_example_runner (test_example.TestTraceAggregation.test_worked_example_runner)
+run_worked_example() executes successfully and returns all canonical metrics. ... ok
+test_zero_tool_calls_request (test_example.TestTraceAggregation.test_zero_tool_calls_request)
+A simple request without tool calls reports tool_call_count == 0. ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

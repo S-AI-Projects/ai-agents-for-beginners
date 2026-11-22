@@ -158,6 +158,24 @@ Here are some strategies to manage the costs of deploying AI agents to productio
 
 In the [example notebook of this section](./code_samples/10-expense_claim-demo.ipynb), we’ll see examples of how we can use observability tools to monitor and evaluate our agent.
 
+## Applied Lab: Production Trace Aggregation & Privacy Safeguarding (R17-T046)
+
+For an applied, zero-dependency educational laboratory demonstrating trace event aggregation by request ID, latency computation, tool-call counting, handling incomplete runs, and safeguarding user prompt privacy, see the [Production Trace Aggregation Applied Lab](./applied-labs/r17-t046/README.md).
+
+### Quick Invocation
+
+```bash
+# Run trace aggregation demonstration and inspect metrics
+python3 10-ai-agents-production/applied-labs/r17-t046/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 10-ai-agents-production/applied-labs/r17-t046 -p "test_*.py"
+```
+
+### Key Contract & Aggregation Guarantees
+- **Canonical Metrics**: Request A aggregates 2 tool calls and a 12.0ms duration with status `SUCCESS`; Request B reports status `FAILED`.
+- **Incomplete Executions**: Requests missing an end/error event are marked `INCOMPLETE` with duration `None` (explicitly not 0).
+- **Privacy Minimization**: User prompts, conversation queries, and payload contents are omitted from aggregated metrics.
 
 ### Got More Questions about AI Agents in Production?
 
