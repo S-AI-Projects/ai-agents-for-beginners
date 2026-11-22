@@ -1,0 +1,21 @@
+=== Canonical JSON & Action Digest Verification (R17-T049) ===
+
+1. Dictionary Key Reordering Invariance:
+   Order 1 Canonical: {"action":"flight_search","destination":"HNL","origin":"PDX"}
+   Order 2 Canonical: {"action":"flight_search","destination":"HNL","origin":"PDX"}
+   Digest 1         : 6efb3c9615b1292c16f7c57dfc12507b3257105ae9393b9789bdde7723e536bd
+   Digest 2         : 6efb3c9615b1292c16f7c57dfc12507b3257105ae9393b9789bdde7723e536bd
+   Digests Match    : True (PASS)
+
+2. Tamper Detection on Modified Arguments:
+   Original Digest : 6efb3c9615b1292c16f7c57dfc12507b3257105ae9393b9789bdde7723e536bd
+   Tampered Digest : f4b778d3421192ac694dc463a37bd541b8cf6a7756e294a1c08d309d8fe8955a
+   Verified Status : False (Expected: False)
+
+3. Applied Scenario Assessment Questions:
+   • Output Prediction for Canonical Record: Check Passed = True
+   • Tamper Detection on Modified Arguments: Check Passed = True
+   • Cryptographic Signature Boundary: Check Passed = True
+
+--- Cryptographic Boundary Statement ---
+CRYPTOGRAPHIC BOUNDARY STATEMENT: A SHA-256 hash digest provides data integrity and tamper detection (confirming that bits have not changed since the digest was computed). HOWEVER, A HASH DIGEST ALONE IS NOT AN AUTHENTICATED DIGITAL SIGNATURE. A bare hash does not prove identity, origin authenticity, or non-repudiation because anyone who modifies a payload can easily recompute a valid SHA-256 hash over the forged payload. True non-repudiation requires asymmetric cryptography (such as Ed25519 or ECDSA), where an agent signs the canonical payload digest using a secure private key, allowing verifiers to authenticate the identity of the signer using the corresponding public key.

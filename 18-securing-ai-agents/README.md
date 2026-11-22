@@ -430,6 +430,12 @@ This lesson covers single-receipt signing and hash-chained sequences. The same p
 - <a href="https://github.com/ScopeBlind/agent-governance-testvectors" target="_blank">Cross-implementation conformance test vectors</a> for the receipt format used in this lesson (Apache-2.0)
 - <a href="https://pynacl.readthedocs.io/" target="_blank">PyNaCl documentation</a> (Ed25519 in Python)
 
+## Applied Lab
+
+For a hands-on applied lab on RFC 8785 JSON canonicalization, SHA-256 digest computation, key-order invariance, and tamper detection for agent actions:
+
+- [Applied Lab: Canonical JSON and Action Digest Verification (R17-T049)](./applied-labs/r17-t049/README.md)
+
 ## Previous Lesson
 
 [Creating Local AI Agents](../17-creating-local-ai-agents/README.md)
