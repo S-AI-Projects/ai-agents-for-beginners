@@ -1,0 +1,21 @@
+test_ambiguous_intent_priority_resolution (test_example.TestFrameworkRouter.test_ambiguous_intent_priority_resolution)
+Queries matching both help and calculate resolve to 'support' by documented priority. ... ok
+test_demonstration_helper_executes_cleanly (test_example.TestFrameworkRouter.test_demonstration_helper_executes_cleanly)
+demonstrate_failure_and_recovery executes and confirms recovery evidence. ... ok
+test_failure_and_subsequent_recovery_proof (test_example.TestFrameworkRouter.test_failure_and_subsequent_recovery_proof)
+Proves that a failure on invalid input does not corrupt state and allows subsequent recovery. ... ok
+test_invalid_and_empty_inputs_raise_explicit_exception (test_example.TestFrameworkRouter.test_invalid_and_empty_inputs_raise_explicit_exception)
+None, empty, whitespace-only, and non-string inputs raise InvalidRequestError. ... ok
+test_multiple_consecutive_failures_then_recovery (test_example.TestFrameworkRouter.test_multiple_consecutive_failures_then_recovery)
+Multiple consecutive errors do not degrade the router's ability to recover. ... ok
+test_route_calculate_to_calculator_handler (test_example.TestFrameworkRouter.test_route_calculate_to_calculator_handler)
+Queries containing calculate/arithmetic intent route to 'calculator' handler. ... ok
+test_route_help_to_support_handler (test_example.TestFrameworkRouter.test_route_help_to_support_handler)
+Queries containing help/support intent route to 'support' handler. ... ok
+test_route_unknown_to_fallback_handler (test_example.TestFrameworkRouter.test_route_unknown_to_fallback_handler)
+Unrecognized queries route to 'fallback' handler. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK
