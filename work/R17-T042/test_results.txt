@@ -1,0 +1,29 @@
+test_canonical_ordering_kahn_and_dfs (test_example.TestComparativeTopologicalSorting.test_canonical_ordering_kahn_and_dfs)
+Canonical plan A -> B -> C orders deterministically as ['A', 'B', 'C'] in both. ... ok
+test_comparative_helper_matches_errors (test_example.TestComparativeTopologicalSorting.test_comparative_helper_matches_errors)
+compare_algorithms helper detects matching errors on invalid fixtures. ... ok
+test_cycle_direct_a_b_a_rejected (test_example.TestComparativeTopologicalSorting.test_cycle_direct_a_b_a_rejected)
+Direct cycle A -> B -> A raises CycleDetectedError in both algorithms. ... ok
+test_cycle_indirect_triangle_rejected (test_example.TestComparativeTopologicalSorting.test_cycle_indirect_triangle_rejected)
+Indirect cycle A -> B -> C -> A raises CycleDetectedError in both algorithms. ... ok
+test_cycle_self_dependency_rejected (test_example.TestComparativeTopologicalSorting.test_cycle_self_dependency_rejected)
+Self-dependency A -> A raises CycleDetectedError in both algorithms. ... ok
+test_diamond_dag_equivalence (test_example.TestComparativeTopologicalSorting.test_diamond_dag_equivalence)
+Diamond DAG produces valid topological ordering with prerequisites preceding sink in both. ... ok
+test_empty_plan_boundary (test_example.TestComparativeTopologicalSorting.test_empty_plan_boundary)
+Empty plan {} returns empty list [] in both algorithms. ... ok
+test_independent_tasks_deterministic_order (test_example.TestComparativeTopologicalSorting.test_independent_tasks_deterministic_order)
+Independent tasks {'B': [], 'A': []} order alphabetically as ['A', 'B'] in both. ... ok
+test_missing_dependency_reported_by_task_id (test_example.TestComparativeTopologicalSorting.test_missing_dependency_reported_by_task_id)
+Unknown dependency raises MissingDependencyError with matching task ID in both. ... ok
+test_multi_branch_pipeline_equivalence (test_example.TestComparativeTopologicalSorting.test_multi_branch_pipeline_equivalence)
+Multi-branch pipeline produces valid topological orders in both algorithms. ... ok
+test_single_task_boundary (test_example.TestComparativeTopologicalSorting.test_single_task_boundary)
+Single task {'A': []} returns ['A'] in both algorithms. ... ok
+test_unified_wrapper_and_execution_simulation (test_example.TestComparativeTopologicalSorting.test_unified_wrapper_and_execution_simulation)
+validate_and_order_plan wrapper and execution simulation work for both methods. ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+OK
