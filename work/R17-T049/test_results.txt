@@ -1,0 +1,25 @@
+test_action_record_dataclass_methods (test_example.TestActionDigestVerification.test_action_record_dataclass_methods)
+ActionRecord methods compute matching canonical JSON and digests. ... ok
+test_all_applied_questions_pass (test_example.TestActionDigestVerification.test_all_applied_questions_pass)
+All applied scenario assessment questions evaluate to True. ... ok
+test_applied_question_1_output_prediction (test_example.TestActionDigestVerification.test_applied_question_1_output_prediction)
+Applied Question 1: Output prediction matches predicted canonical JSON and digest. ... ok
+test_applied_question_2_tamper_detection (test_example.TestActionDigestVerification.test_applied_question_2_tamper_detection)
+Applied Question 2: Tamper detection check executes and passes. ... ok
+test_applied_question_3_signature_boundary (test_example.TestActionDigestVerification.test_applied_question_3_signature_boundary)
+Applied Question 3: Signature boundary check executes and passes. ... ok
+test_canonical_json_compactness_no_whitespace (test_example.TestActionDigestVerification.test_canonical_json_compactness_no_whitespace)
+Canonical JSON contains no insignificant whitespace between keys and values. ... ok
+test_modifying_argument_invalidates_digest (test_example.TestActionDigestVerification.test_modifying_argument_invalidates_digest)
+Altering any argument or field invalidates the SHA-256 digest and fails integrity check. ... ok
+test_nested_reordered_keys_preserve_digest (test_example.TestActionDigestVerification.test_nested_reordered_keys_preserve_digest)
+Nested dictionaries with differing key orders are canonicalized identically. ... ok
+test_reordered_dictionary_keys_preserve_digest (test_example.TestActionDigestVerification.test_reordered_dictionary_keys_preserve_digest)
+Reordering dictionary keys produces identical canonical JSON and identical SHA-256 digest. ... ok
+test_signature_boundary_statement_explicitly_stated (test_example.TestActionDigestVerification.test_signature_boundary_statement_explicitly_stated)
+System explicitly documents that a hash digest alone is NOT a digital signature. ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK
