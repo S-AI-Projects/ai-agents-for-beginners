@@ -1,0 +1,20 @@
+=== Browser Action Validation with Origin and Step Guards (R17-T045) ===
+
+Policy Configuration: Allowed Origins = {'example.invalid'}, Step Budget = 3
+
+1. Canonical Valid Sequence (3 steps to example.invalid):
+   Monolithic Result : Passed=True
+   Decomposed Result : Passed=True
+   Equivalent        : True
+
+2. Step Budget Exceeded Sequence (4 steps under budget of 3):
+   Monolithic Error  : StepBudgetExceededError
+   Decomposed Error  : StepBudgetExceededError
+   Equivalent        : True
+
+3. Disallowed Origin Navigation (https://untrusted-site.com):
+   Monolithic Error  : OriginValidationError
+   Decomposed Error  : OriginValidationError
+   Equivalent        : True
+
+All comparative demonstration fixtures executed successfully.
