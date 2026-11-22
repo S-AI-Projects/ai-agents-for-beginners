@@ -1,0 +1,31 @@
+test_adding_exact_capacity (test_example.TestBoundedConversationMemory.test_adding_exact_capacity)
+Adding exactly capacity items retains all items without eviction. ... ok
+test_adding_under_capacity (test_example.TestBoundedConversationMemory.test_adding_under_capacity)
+Adding fewer items than capacity preserves all items in arrival order. ... ok
+test_canonical_scenario_a_b_c_d_retains_b_c_d (test_example.TestBoundedConversationMemory.test_canonical_scenario_a_b_c_d_retains_b_c_d)
+Canonical requirement: Adding A, B, C, D retains ['B', 'C', 'D'] in arrival order. ... ok
+test_canonical_simulation_helper (test_example.TestBoundedConversationMemory.test_canonical_simulation_helper)
+simulate_canonical_scenario helper returns expected validation dictionary. ... ok
+test_clear_operation_and_trace (test_example.TestBoundedConversationMemory.test_clear_operation_and_trace)
+Clearing memory resets size to 0 and records CLEAR action in state trace. ... ok
+test_conversation_record_objects (test_example.TestBoundedConversationMemory.test_conversation_record_objects)
+Memory handles structured immutable ConversationRecord objects. ... ok
+test_defensive_copy_immutability_append (test_example.TestBoundedConversationMemory.test_defensive_copy_immutability_append)
+Appending to the list returned by get_records() does not alter internal memory. ... ok
+test_defensive_copy_immutability_nested_mutation (test_example.TestBoundedConversationMemory.test_defensive_copy_immutability_nested_mutation)
+Mutating nested dictionaries or objects in returned view does not alter internal memory. ... ok
+test_defensive_copy_immutability_pop_and_clear (test_example.TestBoundedConversationMemory.test_defensive_copy_immutability_pop_and_clear)
+Popping or clearing the list returned by get_records() does not alter internal memory. ... ok
+test_empty_initialization (test_example.TestBoundedConversationMemory.test_empty_initialization)
+Initialized memory is empty and satisfies invariants. ... ok
+test_fifo_sliding_window_multiple_overflows (test_example.TestBoundedConversationMemory.test_fifo_sliding_window_multiple_overflows)
+Multiple sequential additions properly slide the window retaining the newest 3. ... ok
+test_formal_capacity_invariant_at_all_steps (test_example.TestBoundedConversationMemory.test_formal_capacity_invariant_at_all_steps)
+Formal invariant check: capacity <= 3 is maintained at every single step. ... ok
+test_intermediate_state_trace_records_every_step (test_example.TestBoundedConversationMemory.test_intermediate_state_trace_records_every_step)
+State trace records snapshots after INIT, each ADD, and CLEAR with complete metadata. ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.001s
+
+OK

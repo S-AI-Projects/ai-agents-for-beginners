@@ -1,0 +1,35 @@
+=== Bounded Conversation Memory with State Trace (R17-T044) ===
+
+Initialized Memory: max_capacity=3
+
+-> Adding record: 'A'
+   Current Memory: ['A']
+
+-> Adding record: 'B'
+   Current Memory: ['A', 'B']
+
+-> Adding record: 'C'
+   Current Memory: ['A', 'B', 'C']
+
+-> Adding record: 'D'
+   [EVICTION] Oldest record evicted: 'A'
+   Current Memory: ['B', 'C', 'D']
+
+Final Retained Memory : ['B', 'C', 'D']
+Expected Memory       : ['B', 'C', 'D']
+Matches Expected      : True
+Invariants Satisfied  : True
+
+--- Defensive Copy Immutability Verification ---
+Retrieved External View: ['B', 'C', 'D']
+Attempting to mutate external view by appending 'MALICIOUS_INJECTION'...
+External View after mutation: ['B', 'C', 'D', 'MALICIOUS_INJECTION']
+Internal Memory after mutation: ['B', 'C', 'D']
+Immutability Intact: True
+
+--- Intermediate State Trace ---
+Step 0  | Action: INIT  | Added: None | Evicted: None | Size: 0/3 | State: [] | Invariant: True
+Step 1  | Action: ADD   | Added: A    | Evicted: None | Size: 1/3 | State: ['A'] | Invariant: True
+Step 2  | Action: ADD   | Added: B    | Evicted: None | Size: 2/3 | State: ['A', 'B'] | Invariant: True
+Step 3  | Action: ADD   | Added: C    | Evicted: None | Size: 3/3 | State: ['A', 'B', 'C'] | Invariant: True
+Step 4  | Action: ADD   | Added: D    | Evicted: A    | Size: 3/3 | State: ['B', 'C', 'D'] | Invariant: True
