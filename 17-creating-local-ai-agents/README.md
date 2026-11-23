@@ -295,6 +295,26 @@ In this lesson you built an agent that runs entirely on your own machine:
 
 This completes the deployment arc: Lesson 16 scaled agents up into Microsoft Foundry, and this lesson scaled them down onto a single workstation. The next lesson turns to keeping deployed agents secure.
 
+## Applied Lab: Model-Manifest Selection — Invariant and State Trace
+
+For a standalone implementation of local model screening, intermediate state tracing, and pipeline invariant testing, see the [Model-Manifest Selection Applied Lab](./applied-labs/r17-t014/README.md).
+
+### Quick Invocation
+
+```bash
+# Run manifest selection & state trace demonstration
+python3 17-creating-local-ai-agents/applied-labs/r17-t014/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 17-creating-local-ai-agents/applied-labs/r17-t014 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Manifest Screening**: Assesses candidate models against workstation RAM budget and requested context window.
+- **Canonical Scenario**: Budget of RAM 6 GB and Context 1024 tokens admits only Fixture A (4 GB, 2048 tokens).
+- **State Invariants**: Records formal intermediate stage traces and enforces strict partition and hand-off invariants.
+- **Educational Scope**: Pure Python 3 standard library simulation using synthetic teaching fixtures with zero cloud or GPU dependencies.
+
 ## Additional Resources
 
 - <a href="https://learn.microsoft.com/azure/ai-foundry/foundry-local/" target="_blank">Microsoft Foundry Local documentation</a>
