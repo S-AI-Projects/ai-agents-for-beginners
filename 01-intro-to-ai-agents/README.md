@@ -126,6 +126,29 @@ Ready to see it in action? Here are the code samples for this lesson:
 
 ---
 
+## Applied Lab: Bounded Agent Loop — Evaluation Experiment
+
+For a standalone implementation of step budget limits, termination control, and a controlled 3-configuration evaluation experiment, see the [Bounded Agent Loop Applied Lab](./applied-labs/r17-t019/README.md).
+
+### Quick Invocation
+
+```bash
+# Run bounded agent loop & evaluation experiment
+python3 01-intro-to-ai-agents/applied-labs/r17-t019/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 01-intro-to-ai-agents/applied-labs/r17-t019 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Step Budgeting**: At most 3 steps permitted; endless plans halt deterministically with `budget_exceeded`.
+- **Orderly Termination**: Scripted sequences terminating with `stop` transition to `terminated_normally`.
+- **Post-Stop Guard**: Actions positioned after `stop` are discarded and never executed.
+- **Evaluation Experiment**: Measures trade-offs across configurations (budgets 2, 3, 5) without real-world model accuracy claims.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero cloud dependencies.
+
+---
+
 ## Got Questions?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to connect with other learners, attend office hours, and get your AI Agent questions answered by the community.
