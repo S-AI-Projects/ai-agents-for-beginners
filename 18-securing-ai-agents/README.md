@@ -419,6 +419,26 @@ This lesson covers single-receipt signing and hash-chained sequences. The same p
 - **Cross-implementation conformance.** Multiple independent implementations of the same receipt format (Python, TypeScript, Rust, Go) cross-verify against shared test vectors. If you build your own implementation, validating against published vectors confirms wire compatibility.
 - **Post-quantum migration.** Ed25519 is widely deployed today but is not quantum-resistant. An `alg` label alone is not migration: a profile must define ML-DSA key encoding, canonical signed bytes, verification, relying-party policy, downgrade resistance, and transition semantics. Plan and test a dual-signature transition against shared vectors before making compatibility claims.
 
+## Applied Lab: Tamper-Evident Action Receipt — Worked Example with Checks
+
+For a standalone implementation of canonical JSON serialization, SHA-256 digest receipts, and tamper-detection regression tests, see the [Tamper-Evident Action Receipt Applied Lab](./applied-labs/r17-t017/README.md).
+
+### Quick Invocation
+
+```bash
+# Run tamper-evident action receipt demonstration
+python3 18-securing-ai-agents/applied-labs/r17-t017/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 18-securing-ai-agents/applied-labs/r17-t017 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Canonical Serialization**: Uses RFC 8785 principles (sorted keys, compact delimiters) so dictionary key ordering does not alter the hash.
+- **Tamper Evidence**: Modifying an action parameter immediately changes the computed SHA-256 digest and fails verification.
+- **Security Boundary**: Explicitly notes that a digest proves integrity against tampering, but an asymmetric key signature (such as Ed25519) is required for true authenticity and non-repudiation.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero external package dependencies.
+
 ## Additional Resources
 
 - <a href="https://datatracker.ietf.org/doc/draft-farley-acta-signed-receipts/" target="_blank">IETF Internet-Draft: Signed Decision Receipts for Machine-to-Machine Access Control</a>
