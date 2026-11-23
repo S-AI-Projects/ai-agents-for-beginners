@@ -341,6 +341,26 @@ Running the app in a secure environment further enhances protection. In enterpri
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
+## Applied Lab: Typed Tool Dispatch — Runnable Concept Example
+
+For an interactive, standalone implementation of allowlisted tool dispatch, numeric argument validation, and bounded sequence execution, see the [Typed Tool Dispatch Applied Lab](./applied-labs/r17-t011/README.md).
+
+### Quick Invocation
+
+```bash
+# Run local tool dispatch demonstration
+python3 04-tool-use/applied-labs/r17-t011/example.py
+
+# Run automated unit tests
+python3 -m unittest discover -s 04-tool-use/applied-labs/r17-t011 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Allowlist Enforcement**: Only pre-registered operations (`add`, `multiply`) are permitted; unknown tools yield structured error diagnostics.
+- **Type Validation**: Strictly checks that arguments `a` and `b` are numeric; string or non-numeric types return explicit errors.
+- **Safety Boundary**: A failed tool invocation halts sequence execution immediately so that succeeding tools cannot run.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero cloud or GPU dependencies.
+
 ## Additional Resources
 
 - <a href="https://microsoft.github.io/build-your-first-agent-with-azure-ai-agent-service-workshop/" target="_blank">Azure AI Agents Service Workshop</a>
