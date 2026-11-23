@@ -177,6 +177,26 @@ Treat it as untrusted page content, not as a developer or user instruction. The 
 Keep action summaries, timestamps, URLs, selected element descriptions, validation results, and screenshot references so the run can be reviewed. Avoid storing passwords, payment details, session cookies, raw personal data, or full page contents unless there is a specific retention and privacy reason.
 </details>
 
+## Applied Lab: Browser-Action Guard — Compare Two Approaches
+
+For a standalone implementation of origin allowlisting, step budget verification, and dual-implementation cross-comparison, see the [Browser-Action Guard Applied Lab](./applied-labs/r17-t013/README.md).
+
+### Quick Invocation
+
+```bash
+# Run browser action guard demonstration
+python3 15-browser-use/applied-labs/r17-t013/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 15-browser-use/applied-labs/r17-t013 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Origin Screening**: Navigation to allowlisted `example.invalid` passes; unauthorized origins rejected before execution.
+- **Budget Bound**: Maximum 3 steps enforced; a 4th action halts with `BUDGET_EXCEEDED`.
+- **Dual Approach Comparison**: Direct stateful evaluator compared against independent reference calculator with identical inputs.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero browser or cloud dependencies.
+
 ## Additional Resources
 
 - [Get started with Project Opal (Frontier)](https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-project-opal-frontier)
