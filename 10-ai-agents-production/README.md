@@ -159,6 +159,27 @@ Here are some strategies to manage the costs of deploying AI agents to productio
 In the [example notebook of this section](./code_samples/10-expense_claim-demo.ipynb), we’ll see examples of how we can use observability tools to monitor and evaluate our agent.
 
 
+## Applied Lab: Trace Aggregation — Refactor the Teaching Example
+
+For a standalone implementation of production telemetry roll-up, privacy-preserving aggregation, and architectural refactoring with before/after equivalence proofs, see the [Trace Aggregation Applied Lab](./applied-labs/r17-t016/README.md).
+
+### Quick Invocation
+
+```bash
+# Run trace aggregation demonstration
+python3 10-ai-agents-production/applied-labs/r17-t016/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 10-ai-agents-production/applied-labs/r17-t016 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Trace Roll-Up**: Request A has 2 tool calls and duration 12ms; Request B fails.
+- **Incomplete Trace Handling**: Missing end events are marked `incomplete` rather than assigned duration 0.
+- **Privacy Enforcement**: Prompts and inputs are excluded from telemetry summaries.
+- **Refactoring Verification**: Extracted `SpanMetricsResolver` maintains 100% equivalence with baseline aggregator.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero cloud dependencies.
+
 ### Got More Questions about AI Agents in Production?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
