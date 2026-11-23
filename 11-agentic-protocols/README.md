@@ -163,6 +163,26 @@ Consider our travel booking website again, but this time, it's powered by NLWeb.
 
 5. **AI Agent Interaction**: Because NLWeb serves as an MCP server, an external AI travel agent could also connect to this website's NLWeb instance. The AI agent could then use the `ask` MCP method to query the website directly: `ask("Are there any vegan-friendly restaurants in the Honolulu area recommended by the hotel?")`. The NLWeb instance would process this, leveraging its database of restaurant information (if loaded), and return a structured JSON response.
 
+## Applied Lab: Bounded Conversation Memory — Scenario Assessment
+
+For a standalone implementation of bounded message stores, defensive copying, and applied scenario assessments, see the [Bounded Conversation Memory Applied Lab](./applied-labs/r17-t020/README.md).
+
+### Quick Invocation
+
+```bash
+# Run bounded conversation memory & scenario assessments
+python3 11-agentic-protocols/applied-labs/r17-t020/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 11-agentic-protocols/applied-labs/r17-t020 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Bounded Sliding Window**: Stores at most 3 conversation records in arrival order; adding A, B, C, D retains B, C, D.
+- **Defensive Copying**: Mutating or clearing the returned list has zero impact on stored agent memory.
+- **Scenario Assessments**: Includes 3 applied questions (predict output, diagnose failure, choose boundary policy) with executable checks.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero cloud or MCP server dependencies.
+
 ### Got More Questions about MCP/A2A/NLWeb?
 
 Join the [Microsoft Foundry Discord](https://discord.com/invite/ATgtXmAS5D) to meet with other learners, attend office hours and get your AI Agents questions answered.
