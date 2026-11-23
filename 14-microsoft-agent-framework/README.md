@@ -426,6 +426,27 @@ Run it locally with `python main.py`, then send a Responses request to `http://l
 
 A runnable version of this example lives in [code-samples/14-langchain-hosted-agent.py](./code-samples/14-langchain-hosted-agent.py). For the full walkthrough (Invocations protocol, custom request schemas, and troubleshooting), see [Host LangGraph agents as Foundry hosted agents](https://learn.microsoft.com/azure/foundry/how-to/develop/langchain-hosted-agents).
 
+## Applied Lab: Bounded Agent Loop — Offline Service Adapter
+
+For a standalone implementation of step budget limiting, decoupled service adapter interfaces, and offline execution tracing, see the [Bounded Agent Loop (Offline Service Adapter) Applied Lab](./applied-labs/r17-t015/README.md).
+
+### Quick Invocation
+
+```bash
+# Run bounded agent loop with offline adapter
+python3 14-microsoft-agent-framework/applied-labs/r17-t015/example.py
+
+# Run automated unit test suite
+python3 -m unittest discover -s 14-microsoft-agent-framework/applied-labs/r17-t015 -p "test_*.py"
+```
+
+### Key Contract & Expected Behaviors
+- **Adapter Abstraction**: All tool and step interactions route through `AgentServiceAdapter`.
+- **Step Budgeting**: At most 3 steps permitted; endless plans halt deterministically with `budget_exceeded`.
+- **Orderly Termination**: Scripted sequences terminating with `stop` transition to `terminated_normally`.
+- **Post-Stop Guard**: Actions scheduled after `stop` are discarded and never executed on the adapter.
+- **Educational Scope**: Pure Python 3 standard library simulation with zero cloud or GPU dependencies.
+
 ## Code Samples 
 
 Code samples for Microsoft Agent Framework can be found in this repository under `xx-python-agent-framework` and `xx-dotnet-agent-framework` files.
